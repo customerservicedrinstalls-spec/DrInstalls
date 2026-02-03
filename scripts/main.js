@@ -1,6 +1,8 @@
 // Main JavaScript for DR Installs Website
+console.log('=== DR INSTALLS SCRIPT LOADED ===');
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== DOM CONTENT LOADED ===');
     // Initialize all components
     initHeroSlider();
     initPortfolioFilter();
@@ -106,13 +108,22 @@ function initSmoothScrolling() {
     });
 }
 
-// Form Handling
+// Form Handling with AJAX
 function initFormHandling() {
-    const forms = document.querySelectorAll('form');
+    console.log('=== INITIALIZING FORM HANDLING ===');
+    const forms = document.querySelectorAll('form.consultation-form');
+    console.log('Found forms:', forms.length);
     
-    forms.forEach(form => {
+    forms.forEach((form, index) => {
+        console.log(`Form ${index + 1}:`, form);
+        console.log(`Form action:`, form.action);
+        
         form.addEventListener('submit', function(e) {
-            e.preventDefault();
+            console.log('=== FORM SUBMIT EVENT TRIGGERED ===');
+            e.preventDefault(); // Always prevent default to handle with AJAX
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
             
             // Basic form validation
             const requiredFields = form.querySelectorAll('[required]');
@@ -127,13 +138,86 @@ function initFormHandling() {
                 }
             });
             
-            if (isValid) {
-                // Show success message
-                showNotification('Thank you! We\'ll contact you soon.', 'success');
-                form.reset();
-            } else {
+            if (!isValid) {
+                console.log('Form validation failed');
                 showNotification('Please fill in all required fields.', 'error');
+                return;
             }
+            
+            console.log('Form validation passed');
+            
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            
+            // Debug: Log form data
+            console.log('=== FORM SUBMISSION DEBUG ===');
+            console.log('Submitting form to:', form.action);
+            console.log('Form data:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`  ${key}: ${value}`);
+            }
+            
+            // Submit via AJAX
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                console.log('Response headers:', response.headers);
+                
+                return response.text().then(text => {
+                    console.log('Response text:', text);
+                    
+                    // Try to parse as JSON
+                    let data;
+                    try {
+                        data = JSON.parse(text);
+                        console.log('Response JSON:', data);
+                    } catch (e) {
+                        console.log('Response is not JSON');
+                        data = { message: text };
+                    }
+                    
+                    if (response.ok) {
+                        // Success
+                        console.log('Form submitted successfully!');
+                        showNotification('Thank you! We\'ll contact you within 24 hours.', 'success');
+                        form.reset();
+                        
+                        // Reset field borders
+                        requiredFields.forEach(field => {
+                            field.style.borderColor = '';
+                        });
+                    } else {
+                        // Handle errors
+                        console.error('Form submission failed with status:', response.status);
+                        if (data.errors) {
+                            const errorMessages = data.errors.map(error => error.message || error).join(', ');
+                            throw new Error(`Formspree error: ${errorMessages}`);
+                        } else {
+                            throw new Error(`Form submission failed: ${data.message || 'Unknown error'}`);
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                showNotification('Sorry, there was an error sending your message. Please try again or call us directly at (815) 483-9713.', 'error');
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            });
         });
     });
 }

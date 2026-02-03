@@ -124,18 +124,18 @@
                 <div class="hero-form">
                     <div class="form-card">
                         <h3>Start Your Project Today</h3>
-                        <form class="consultation-form">
+                        <form class="consultation-form" action="https://formspree.io/f/maqbrwjk" method="POST">
                             <div class="form-group">
-                                <input type="text" placeholder="Full Name" required>
+                                <input type="text" name="name" placeholder="Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" placeholder="Email Address" required>
+                                <input type="email" name="email" placeholder="Email Address" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" placeholder="Phone Number" required>
+                                <input type="tel" name="phone" placeholder="Phone Number" required>
                             </div>
                             <div class="form-group">
-                                <select required>
+                                <select name="service" required>
                                     <option value="">Select Service</option>
                                     <option value="inground-pool">Inground Pool</option>
                                     <option value="above-ground-pool">Above Ground Pool</option>
@@ -146,8 +146,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <textarea placeholder="Tell us about your project" rows="3"></textarea>
+                                <textarea name="message" placeholder="Tell us about your project" rows="3"></textarea>
                             </div>
+                            <input type="hidden" name="_replyto" value="customerservicedrinstalls@gmail.com">
+                            <input type="hidden" name="_subject" value="New Consultation Request from DR Installs Website">
                             <button type="submit" class="btn btn-primary btn-full">
                                 Request Free Consultation
                             </button>

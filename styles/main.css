@@ -2773,3 +2773,148 @@ section {
         height: 120px;
     }
 }
+
+/* Thank You Page Styles */
+.thank-you-content {
+    padding: 80px 0;
+    background: var(--gray-100);
+}
+
+.thank-you-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 60px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.thank-you-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+    background: var(--success-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thank-you-icon i {
+    font-size: 40px;
+    color: var(--white);
+}
+
+.thank-you-card h2 {
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.thank-you-card > p {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.next-steps {
+    margin: 50px 0;
+    text-align: left;
+}
+
+.next-steps h3 {
+    text-align: center;
+    color: var(--gray-900);
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.step-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 15px;
+}
+
+.step-item h4 {
+    color: var(--gray-900);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.step-item p {
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.contact-options {
+    border-top: 1px solid var(--gray-300);
+    padding-top: 40px;
+    text-align: center;
+}
+
+.contact-options h3 {
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .thank-you-card {
+        padding: 40px 25px;
+    }
+    
+    .thank-you-card h2 {
+        font-size: 1.8rem;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
