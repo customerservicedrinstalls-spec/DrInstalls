@@ -44,7 +44,7 @@ const state = {
     serviceType: 'opening',
     poolSize: null,
     addons: [],         // array of { value, price, label }
-    surcharges: [],     // array of { value, price, label }
+
     serviceDate: '',
     serviceTime: '',
     customer: {},
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initServiceTypeToggle();
     initSizeOptions();
     initAddonOptions();
-    initSurchargeOptions();
+
     initDatePicker();
     initTimeSelect();
     initStepNav();
@@ -154,29 +154,6 @@ function initAddonOptions() {
 }
 
 // =====================
-// Surcharges
-// =====================
-const SURCHARGE_LABELS = {
-    'michigan':   'Michigan Surcharge',
-    'nw-suburbs': 'NW Suburbs Surcharge',
-};
-
-function initSurchargeOptions() {
-    document.querySelectorAll('input[name="surcharge"]').forEach(cb => {
-        cb.addEventListener('change', function () {
-            const val = this.value;
-            const price = parseInt(this.dataset.price, 10);
-            if (this.checked) {
-                state.surcharges.push({ value: val, price, label: SURCHARGE_LABELS[val] });
-            } else {
-                state.surcharges = state.surcharges.filter(s => s.value !== val);
-            }
-            updatePriceDisplay();
-        });
-    });
-}
-
-// =====================
 // Date & Time
 // =====================
 function initDatePicker() {
@@ -206,8 +183,7 @@ function updatePriceDisplay() {
     const size = state.poolSize;
     const basePrice = size ? (PRICING[type][size] || 0) : 0;
     const addonsTotal = state.addons.reduce((s, a) => s + a.price, 0);
-    const surchargeTotal = state.surcharges.reduce((s, a) => s + a.price, 0);
-    const total = basePrice + addonsTotal + surchargeTotal;
+    const total = basePrice + addonsTotal;
 
     // Base line
     const lineBase = document.getElementById('line-base');
@@ -222,15 +198,6 @@ function updatePriceDisplay() {
         lineAddons.style.display = 'none';
     }
 
-    // Surcharge line
-    const lineSurcharge = document.getElementById('line-surcharge');
-    if (surchargeTotal > 0) {
-        lineSurcharge.style.display = 'flex';
-        lineSurcharge.querySelector('.price-value').textContent = '+$' + surchargeTotal.toFixed(2);
-    } else {
-        lineSurcharge.style.display = 'none';
-    }
-
     // Total
     document.getElementById('total-price').textContent = '$' + total.toFixed(2);
 }
@@ -240,8 +207,7 @@ function calcTotal() {
     const size = state.poolSize;
     const base = size ? (PRICING[type][size] || 0) : 0;
     const addons = state.addons.reduce((s, a) => s + a.price, 0);
-    const surcharges = state.surcharges.reduce((s, a) => s + a.price, 0);
-    return base + addons + surcharges;
+    return base + addons;
 }
 
 // =====================
@@ -399,9 +365,7 @@ function populateContract() {
     const type = state.serviceType === 'opening' ? 'Pool Opening' : 'Pool Closing';
     const size = SIZE_LABELS[state.poolSize] || state.poolSize;
     const addonList = state.addons.length ? state.addons.map(a => a.label).join(', ') : 'None';
-    const surchargeList = state.surcharges.map(s => s.label);
-    const allAddons = [...state.addons.map(a => a.label), ...surchargeList];
-    const allAddonsStr = allAddons.length ? allAddons.join(', ') : 'None';
+    const allAddonsStr = state.addons.length ? state.addons.map(a => a.label).join(', ') : 'None';
     const total = '$' + calcTotal().toFixed(2);
     const dateFormatted = formatDate(state.serviceDate);
     const timeFormatted = TIME_LABELS[state.serviceTime] || state.serviceTime;
@@ -484,7 +448,7 @@ function populateConfirmation() {
     const total = '$' + calcTotal().toFixed(2);
     const dateFormatted = formatDate(state.serviceDate);
     const timeFormatted = TIME_LABELS[state.serviceTime];
-    const addons = [...state.addons, ...state.surcharges].map(a => a.label).join(', ') || 'None';
+    const addons = state.addons.map(a => a.label).join(', ') || 'None';
 
     const rows = [
         ['Service', type],
