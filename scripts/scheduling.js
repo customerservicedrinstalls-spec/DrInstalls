@@ -522,17 +522,40 @@ async function generatePdf() {
 
     try {
         const { jsPDF } = window.jspdf;
-        const contractEl = document.getElementById('contractContent');
 
-        // Capture the contract as canvas
+        // The contract lives inside step-3 which is hidden (display:none) on step 4.
+        // We need to temporarily make it visible for html2canvas to render it.
+        const step3 = document.getElementById('step-3');
+        const contractEl = document.getElementById('contractContent');
+        const wasHidden = !step3.classList.contains('active');
+
+        if (wasHidden) {
+            step3.style.display = 'block';
+            step3.style.position = 'absolute';
+            step3.style.left = '-9999px';
+            step3.style.top = '0';
+        }
+
+        // Give the browser a frame to lay out
+        await new Promise(r => setTimeout(r, 100));
+
         const canvas = await html2canvas(contractEl, {
             scale: 2,
             useCORS: true,
             logging: false,
             backgroundColor: '#ffffff',
+            windowWidth: 900,
         });
 
-        const imgData = canvas.toDataURL('image/png');
+        // Restore hidden state
+        if (wasHidden) {
+            step3.style.display = '';
+            step3.style.position = '';
+            step3.style.left = '';
+            step3.style.top = '';
+        }
+
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
         const pdf = new jsPDF({
             orientation: 'portrait',
             unit: 'pt',
@@ -541,30 +564,40 @@ async function generatePdf() {
 
         const pageWidth = pdf.internal.pageSize.getWidth();
         const pageHeight = pdf.internal.pageSize.getHeight();
-        const margin = 40;
-        const contentWidth = pageWidth - margin * 2;
-        const imgHeight = (canvas.height * contentWidth) / canvas.width;
+        const margin = 30;
+        const usableWidth = pageWidth - margin * 2;
+        const usableHeight = pageHeight - margin * 2;
 
-        let yOffset = margin;
-        let remainingHeight = imgHeight;
+        // Scale image to fit page width
+        const imgAspect = canvas.height / canvas.width;
+        const scaledWidth = usableWidth;
+        const scaledHeight = scaledWidth * imgAspect;
 
-        // Multi-page support
-        while (remainingHeight > 0) {
-            const sliceHeight = Math.min(remainingHeight, pageHeight - margin * 2);
-            const sourceY = (imgHeight - remainingHeight) * (canvas.height / imgHeight);
-            const sliceCanvas = document.createElement('canvas');
-            sliceCanvas.width = canvas.width;
-            sliceCanvas.height = (sliceHeight * canvas.height) / imgHeight;
-            const ctx = sliceCanvas.getContext('2d');
-            ctx.drawImage(canvas, 0, -sourceY * (canvas.height / imgHeight));
-            const sliceData = sliceCanvas.toDataURL('image/png');
+        if (scaledHeight <= usableHeight) {
+            // Fits on one page
+            pdf.addImage(imgData, 'JPEG', margin, margin, scaledWidth, scaledHeight);
+        } else {
+            // Multi-page: slice the source canvas into page-sized chunks
+            const pxPerPage = (usableHeight / scaledHeight) * canvas.height;
+            let srcY = 0;
+            let page = 0;
 
-            pdf.addImage(sliceData, 'PNG', margin, yOffset, contentWidth, sliceHeight);
-            remainingHeight -= sliceHeight;
+            while (srcY < canvas.height) {
+                if (page > 0) pdf.addPage();
 
-            if (remainingHeight > 0) {
-                pdf.addPage();
-                yOffset = margin;
+                const sliceH = Math.min(pxPerPage, canvas.height - srcY);
+                const sliceCanvas = document.createElement('canvas');
+                sliceCanvas.width = canvas.width;
+                sliceCanvas.height = sliceH;
+                const ctx = sliceCanvas.getContext('2d');
+                ctx.drawImage(canvas, 0, srcY, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
+
+                const sliceData = sliceCanvas.toDataURL('image/jpeg', 0.95);
+                const sliceScaledH = (sliceH / canvas.width) * scaledWidth;
+                pdf.addImage(sliceData, 'JPEG', margin, margin, scaledWidth, sliceScaledH);
+
+                srcY += sliceH;
+                page++;
             }
         }
 
@@ -574,7 +607,7 @@ async function generatePdf() {
 
     } catch (err) {
         console.error('PDF generation failed:', err);
-        alert('PDF generation failed. Please try again or contact us directly.');
+        alert('PDF generation failed. Please try again or contact us directly at (815) 483-9713.');
     } finally {
         btn.disabled = false;
         btn.innerHTML = '<i class="bi bi-file-earmark-pdf"></i> Download Contract PDF';
