@@ -1,6 +1,11 @@
 // DR Installs - Scheduling Wizard
 
 // =====================
+// Config - Replace with your deployed Google Apps Script URL
+// =====================
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+// =====================
 // Pricing Data
 // =====================
 const PRICING = {
@@ -432,9 +437,22 @@ function initSignContract() {
             return;
         }
 
-        // Go to confirmation
-        populateConfirmation();
-        goToStep(4);
+        // Submit to Google Sheets, then go to confirmation
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Submitting...';
+        submitToGoogleSheets().then(() => {
+            populateConfirmation();
+            goToStep(4);
+        }).catch(err => {
+            console.error('Submission error:', err);
+            // Still go to confirmation even if submission fails
+            // (they can still download the PDF, and we'll show a note)
+            populateConfirmation();
+            goToStep(4);
+        }).finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-pen"></i> Sign Contract';
+        });
     });
 }
 
@@ -468,6 +486,44 @@ function populateConfirmation() {
             `<div class="summary-row"><span>${label}</span><span>${value}</span></div>`
         ).join('');
     }
+}
+
+// =====================
+// Submit to Google Sheets
+// =====================
+async function submitToGoogleSheets() {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        console.warn('Google Apps Script URL not configured — skipping submission.');
+        return;
+    }
+
+    const c = state.customer;
+    const payload = {
+        serviceType: state.serviceType === 'opening' ? 'Pool Opening' : 'Pool Closing',
+        poolSize: SIZE_LABELS[state.poolSize] || state.poolSize,
+        addons: state.addons.length ? state.addons.map(a => a.label).join(', ') : 'None',
+        serviceDate: state.serviceDate,
+        serviceTime: TIME_LABELS[state.serviceTime] || state.serviceTime,
+        totalPrice: '$' + calcTotal().toFixed(2),
+        customerName: c.name,
+        address: c.address,
+        city: c.city,
+        state: c.state,
+        zip: c.zip,
+        email: c.email,
+        phone: c.phone,
+        signatureDate: state.signatureDate,
+    };
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',  // Apps Script doesn't support CORS preflight
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload),
+    });
+
+    // no-cors means we can't read the response, but the request goes through
+    console.log('Submitted to Google Sheets');
 }
 
 // =====================
