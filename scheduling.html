@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Pool Opening & Closing | DR Installs</title>
+    <meta name="description" content="Schedule your pool opening or closing service with DR Installs. Easy online booking with instant pricing.">
+    <link rel="stylesheet" href="styles/main.css?v=7">
+    <link rel="stylesheet" href="styles/scheduling.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="trust-indicators">
+                        <span class="badge">6+ Years Experience</span>
+                        <span class="badge">Licensed & Insured</span>
+                        <span class="badge">3+ State Locations</span>
+                    </div>
+                    <div class="contact-info">
+                        <a href="tel:+18154839713" class="phone">(815) 483-9713</a>
+                        <a href="contact.html" class="cta-button">Free Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo.jpg" alt="DR Installs">
+                        <span class="logo-motto">Life Is Better By The Pool</span>
+                    </a>
+                    
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                        <li class="nav-item"><a href="financing.html" class="nav-link">Financing</a></li>
+                        <li class="nav-item"><a href="scheduling.html" class="nav-link active">Schedule Service</a></li>
+                        <li class="nav-item"><a href="reviews.html" class="nav-link">Reviews</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                    
+                    <button class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Schedule Pool Service</h1>
+            <p>Book your pool opening or closing in minutes</p>
+        </div>
+    </section>
+
+    <!-- Scheduling Wizard -->
+    <section class="scheduling-section">
+        <div class="container">
+            <!-- Progress Bar -->
+            <div class="wizard-progress">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Service</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Your Info</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">Contract</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <span class="step-label">Confirmation</span>
+                </div>
+            </div>
+
+            <div class="wizard-container">
+                <!-- Step 1: Service Selection -->
+                <div class="wizard-step active" id="step-1">
+                    <div class="step-content">
+                        <div class="step-main">
+                            <h2><i class="bi bi-water"></i> Select Your Service</h2>
+
+                            <!-- Service Type -->
+                            <div class="form-section">
+                                <h3>Service Type</h3>
+                                <div class="service-type-toggle">
+                                    <label class="toggle-option">
+                                        <input type="radio" name="serviceType" value="opening" checked>
+                                        <div class="toggle-card">
+                                            <i class="bi bi-sun"></i>
+                                            <span>Pool Opening</span>
+                                        </div>
+                                    </label>
+                                    <label class="toggle-option">
+                                        <input type="radio" name="serviceType" value="closing">
+                                        <div class="toggle-card">
+                                            <i class="bi bi-snow2"></i>
+                                            <span>Pool Closing</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Pool Size -->
+                            <div class="form-section">
+                                <h3>Pool Size</h3>
+                                <div class="size-group">
+                                    <h4><i class="bi bi-circle"></i> Round Pools</h4>
+                                    <div class="size-options">
+                                        <label class="size-option">
+                                            <input type="radio" name="poolSize" value="15-21" required>
+                                            <div class="size-card">
+                                                <span class="size-label">15' – 21'</span>
+                                                <span class="size-price" data-opening="295" data-closing="285"></span>
+                                            </div>
+                                        </label>
+                                        <label class="size-option">
+                                            <input type="radio" name="poolSize" value="24-27">
+                                            <div class="size-card">
+                                                <span class="size-label">24' – 27'</span>
+                                                <span class="size-price" data-opening="315" data-closing="305"></span>
+                                            </div>
+                                        </label>
+                                        <label class="size-option">
+                                            <input type="radio" name="poolSize" value="30-33">
+                                            <div class="size-card">
+                                                <span class="size-label">30' – 33'</span>
+                                                <span class="size-price" data-opening="330" data-closing="320"></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="size-group">
+                                    <h4><i class="bi bi-bounding-box"></i> Oval / Rectangular Pools</h4>
+                                    <div class="size-options">
+                                        <label class="size-option">
+                                            <input type="radio" name="poolSize" value="12x17-15x26">
+                                            <div class="size-card">
+                                                <span class="size-label">12'x17' – 15'x26'</span>
+                                                <span class="size-price" data-opening="345" data-closing="320"></span>
+                                            </div>
+                                        </label>
+                                        <label class="size-option">
+                                            <input type="radio" name="poolSize" value="15x30-21x43">
+                                            <div class="size-card">
+                                                <span class="size-label">15'x30' – 21'x43'</span>
+                                                <span class="size-price" data-opening="345" data-closing="335"></span>
+                                            </div>
+                                        </label>
+                                        <label class="size-option">
+                                            <input type="radio" name="poolSize" value="21x43+">
+                                            <div class="size-card">
+                                                <span class="size-label">21'x43' +</span>
+                                                <span class="size-price" data-opening="360" data-closing="350"></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add-ons -->
+                            <div class="form-section">
+                                <h3>Add-Ons</h3>
+                                <div class="addons-grid">
+                                    <label class="addon-option">
+                                        <input type="checkbox" name="addon" value="center-drain" data-price="10">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">Center Drain</span>
+                                                <span class="addon-price">+$10</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="addon-option">
+                                        <input type="checkbox" name="addon" value="heater" data-price="15">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">Heater</span>
+                                                <span class="addon-price">+$15</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="addon-option">
+                                        <input type="checkbox" name="addon" value="partial-deck" data-price="35">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">Partial Deck <small>(&gt;10ft around pool)</small></span>
+                                                <span class="addon-price">+$35</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="addon-option">
+                                        <input type="checkbox" name="addon" value="full-deck" data-price="70">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">Full Deck <small>(all around)</small></span>
+                                                <span class="addon-price">+$70</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="addon-option opening-only">
+                                        <input type="checkbox" name="addon" value="submerged-cover" data-price="50">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">Submerged Cover Removal</span>
+                                                <span class="addon-price">+$50</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Location Surcharge -->
+                            <div class="form-section">
+                                <h3>Location</h3>
+                                <div class="addons-grid">
+                                    <label class="addon-option">
+                                        <input type="checkbox" name="surcharge" value="michigan" data-price="50">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">Michigan or surrounding areas</span>
+                                                <span class="addon-price">+$50</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="addon-option">
+                                        <input type="checkbox" name="surcharge" value="nw-suburbs" data-price="50">
+                                        <div class="addon-card">
+                                            <div class="addon-info">
+                                                <span class="addon-name">NW Suburbs or surrounding areas</span>
+                                                <span class="addon-price">+$50</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Date & Time -->
+                            <div class="form-section">
+                                <h3>Preferred Date & Time</h3>
+                                <div class="datetime-row">
+                                    <div class="form-group">
+                                        <label for="serviceDate">Service Date</label>
+                                        <input type="date" id="serviceDate" name="serviceDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="serviceTime">Time Window</label>
+                                        <select id="serviceTime" name="serviceTime" required>
+                                            <option value="">Select a time</option>
+                                            <option value="morning">Morning (8–11 AM)</option>
+                                            <option value="afternoon">Afternoon (12–3 PM)</option>
+                                            <option value="evening">Evening (4–6 PM)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price Summary Sidebar -->
+                        <div class="step-sidebar">
+                            <div class="price-summary">
+                                <h3><i class="bi bi-receipt"></i> Price Summary</h3>
+                                <div class="price-lines">
+                                    <div class="price-line" id="line-base">
+                                        <span>Base Service</span>
+                                        <span class="price-value">$0.00</span>
+                                    </div>
+                                    <div class="price-line" id="line-addons" style="display:none;">
+                                        <span>Add-Ons</span>
+                                        <span class="price-value">$0.00</span>
+                                    </div>
+                                    <div class="price-line" id="line-surcharge" style="display:none;">
+                                        <span>Location Surcharge</span>
+                                        <span class="price-value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="price-total">
+                                    <span>Total</span>
+                                    <span class="total-value" id="total-price">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <div></div>
+                        <button class="btn btn-primary btn-next" data-next="2">
+                            Continue <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Customer Information -->
+                <div class="wizard-step" id="step-2">
+                    <h2><i class="bi bi-person"></i> Your Information</h2>
+
+                    <div class="customer-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">Full Name *</label>
+                                <input type="text" id="customerName" name="customerName" placeholder="John Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerAddress">Street Address *</label>
+                                <input type="text" id="customerAddress" name="customerAddress" placeholder="123 Main St" required>
+                            </div>
+                        </div>
+                        <div class="form-row form-row-3">
+                            <div class="form-group">
+                                <label for="customerCity">City *</label>
+                                <input type="text" id="customerCity" name="customerCity" placeholder="Joliet" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerState">State *</label>
+                                <select id="customerState" name="customerState" required>
+                                    <option value="">Select</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="MI">Michigan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerZip">Zip Code *</label>
+                                <input type="text" id="customerZip" name="customerZip" placeholder="60435" required>
+                            </div>
+                        </div>
+                        <div class="form-row form-row-2">
+                            <div class="form-group">
+                                <label for="customerEmail">Email *</label>
+                                <input type="email" id="customerEmail" name="customerEmail" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPhone">Phone *</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" placeholder="(555) 123-4567" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button class="btn btn-secondary btn-prev" data-prev="1">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </button>
+                        <button class="btn btn-primary btn-next" data-next="3">
+                            Continue <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Contract & Signature -->
+                <div class="wizard-step" id="step-3">
+                    <h2><i class="bi bi-file-earmark-text"></i> Review & Sign Contract</h2>
+
+                    <div class="contract-wrapper" id="contractContent">
+                        <div class="contract-document">
+                            <div class="contract-header">
+                                <img src="assets/logo.jpg" alt="DR Installs" class="contract-logo">
+                                <div class="contract-company">
+                                    <strong>DR INSTALLS, LLC.</strong><br>
+                                    2202 Mayfield Ave<br>
+                                    Joliet, Illinois 60435<br>
+                                    <em>Life is better by the pool</em><br>
+                                    (000) 000-0000
+                                </div>
+                            </div>
+
+                            <h3 class="contract-title">OPENING SERVICE CONTRACT</h3>
+
+                            <p>This agreement is made by DR Installs (Contractor) and between <strong id="contractCustomerName">[Customer Name]</strong> (Customer), related to a Liner Installation project.</p>
+
+                            <h4>Service Description</h4>
+                            <p>The Company agrees to perform the following pool opening services at the Client's property:</p>
+                            <ol type="a">
+                                <li><strong>Cover Removal:</strong> Remove the pool cover from the pool.</li>
+                                <li><strong>Cover Cleaning:</strong> Clean the pool cover to remove surface debris and dirt.</li>
+                                <li><strong>Cover Folding &amp; Storage:</strong> Properly fold the pool cover and prepare it for storage.</li>
+                                <li><strong>Filter Equipment Installation:</strong> Install and set up the filter equipment (filter, pump, and associated components) to ensure the system is ready for operation.</li>
+                                <li><strong>Chemical Addition:</strong> Add the appropriate opening chemicals to the pool water.</li>
+                            </ol>
+
+                            <h4>Equipment Connections</h4>
+                            <p>If the Client has the following add-ons in the pool system, we will connect and integrate each item as part of this opening service, provide the equipment in good working condition and accessible at the time of service:</p>
+                            <ol type="a">
+                                <li><strong>Heater:</strong> Connect the pool heater to the filtration system and verify proper hookup.</li>
+                                <li><strong>Hard Piping:</strong> Reconnect any hard-piped plumbing lines that were disconnected for the winter closing.</li>
+                                <li><strong>Chlorinator / Chemical Feeder:</strong> Connect and configure the automatic chlorinator or chemical feeder to the pool system.</li>
+                            </ol>
+                            <p>The Company is not responsible for repairs to equipment that is found to be damaged or non-functional at the time of service.</p>
+
+                            <h4>Important Notice</h4>
+                            <p>The pool opening service described herein does not include cleaning of the pool water, vacuuming, brushing pool walls or floor, removal of debris from the pool water, or any other pool cleaning tasks. Pool cleaning is a separate service and must be scheduled independently. <em>(We are not offering a cleaning service at the moment)</em></p>
+
+                            <p>Payment is due upon completion of services unless otherwise agreed in writing.</p>
+
+                            <h4>Limitation of Liability</h4>
+                            <p>The Company shall not be liable for pre-existing damage to pool equipment, plumbing, or structures. The Company is not responsible for water conditions resulting from factors outside the scope of this opening service (e.g., algae growth, water discoloration, or imbalance caused by debris accumulation during the off-season).</p>
+                            <p>The total liability of the Company under this Agreement shall not exceed the amount paid by the Client for the services provided herein.</p>
+
+                            <div class="contract-service-details">
+                                <h4>Service Details</h4>
+                                <table class="contract-table">
+                                    <tr><td>Service Type</td><td id="contractServiceType">—</td></tr>
+                                    <tr><td>Pool Size</td><td id="contractPoolSize">—</td></tr>
+                                    <tr><td>Add-Ons</td><td id="contractAddons">—</td></tr>
+                                    <tr><td>Service Date</td><td id="contractDate">—</td></tr>
+                                    <tr><td>Time Window</td><td id="contractTime">—</td></tr>
+                                    <tr><td><strong>Total Price</strong></td><td><strong id="contractTotal">—</strong></td></tr>
+                                </table>
+                            </div>
+
+                            <div class="contract-signature-area">
+                                <h4>Signature</h4>
+                                <div class="signature-fields">
+                                    <div class="form-group">
+                                        <label for="signatureDate">Date</label>
+                                        <input type="date" id="signatureDate" name="signatureDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signatureName">Customer Signature (type your full name)</label>
+                                        <input type="text" id="signatureName" name="signatureName" class="signature-input" placeholder="Type your full name" required>
+                                    </div>
+                                </div>
+                                <p class="signature-notice"><em>Installation services cannot proceed without the signed contract.</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button class="btn btn-secondary btn-prev" data-prev="2">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </button>
+                        <button class="btn btn-primary" id="signContractBtn">
+                            <i class="bi bi-pen"></i> Sign Contract
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div class="wizard-step" id="step-4">
+                    <div class="confirmation-content">
+                        <div class="confirmation-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <h2>You're All Set!</h2>
+                        <p class="confirmation-subtitle">Your pool service has been scheduled. We'll be in touch to confirm your appointment.</p>
+
+                        <div class="confirmation-summary">
+                            <h3>Booking Summary</h3>
+                            <div class="summary-details" id="confirmationSummary"></div>
+                        </div>
+
+                        <div class="confirmation-actions">
+                            <button class="btn btn-primary" id="downloadPdfBtn">
+                                <i class="bi bi-file-earmark-pdf"></i> Download Contract PDF
+                            </button>
+                            <a href="index.html" class="btn btn-secondary">
+                                <i class="bi bi-house"></i> Back to Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.jpg" alt="DR Installs">
+                    </div>
+                    <p>Professional construction you can trust. Founded in 2020, serving Indiana, Illinois, and Michigan.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100063558120040" class="social-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/drinstalls/" class="social-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Inground Pools</a></li>
+                        <li><a href="services.html">Above Ground Pools</a></li>
+                        <li><a href="services.html">Deck Construction</a></li>
+                        <li><a href="services.html">Landscaping</a></li>
+                        <li><a href="services.html">Pool Maintenance</a></li>
+                        <li><a href="services.html">Liner Replacement</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="financing.html">Financing</a></li>
+                        <li><a href="scheduling.html">Schedule Service</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> (815) 483-9713</p>
+                        <p><strong>Email:</strong> customerservicedrinstalls@gmail.com</p>
+                        <p><strong>Hours:</strong> Mon-Fri 8AM-6PM, Sat 9AM-4PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DR Installs. All Rights Reserved. | Licensed & Insured</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="scripts/main.js?v=7"></script>
+    <script src="scripts/scheduling.js?v=1"></script>
+</body>
+</html>
