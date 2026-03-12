@@ -1,4 +1,4 @@
-# DR Installs Website Redesign
+# DR Installs Website Redesign 
 
 A comprehensive redesign of the DR Installs website, expanding from a basic 3-service layout to a full-featured outdoor services company website inspired by industry leaders like Dean's Landscaping.
 
