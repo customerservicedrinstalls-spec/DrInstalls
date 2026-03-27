@@ -384,27 +384,22 @@ const animationStyles = `
     @media (max-width: 768px) {
         .nav-menu {
             position: fixed;
-            top: 0;
+            top: 60px;
             left: 0;
             right: 0;
             bottom: 60px;
             background: white;
             flex-direction: column;
-            padding: 80px 20px 20px;
+            padding: 10px 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             z-index: 998;
-            transform: translateX(100%);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            display: none;
         }
         
         .nav-menu.active {
-            transform: translateX(0);
-            opacity: 1;
-            visibility: visible;
+            display: flex;
         }
         
         .mobile-menu-toggle.active span:nth-child(1) {
