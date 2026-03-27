@@ -22,11 +22,14 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--gray-900);
-    overflow-x: hidden;
 }
 
 .container {
