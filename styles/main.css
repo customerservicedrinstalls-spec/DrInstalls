@@ -1534,30 +1534,7 @@ section {
         font-size: 0.75rem;
     }
     
-    .nav-menu {
-        position: fixed !important;
-        top: 65px !important;
-        left: 0;
-        right: 0;
-        bottom: 60px !important;
-        background: var(--white);
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        z-index: 999;
-        overflow-y: scroll !important;
-        -webkit-overflow-scrolling: touch;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu.active {
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
+    /* Mobile nav menu styles are in main.js */
     
     .nav-menu li {
         margin: 0;

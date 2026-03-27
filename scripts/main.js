@@ -384,21 +384,25 @@ const animationStyles = `
     @media (max-width: 768px) {
         .nav-menu {
             position: fixed;
-            top: 100%;
+            top: 0;
             left: 0;
             right: 0;
+            bottom: 60px;
             background: white;
             flex-direction: column;
-            padding: 20px;
+            padding: 80px 20px 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transform: translateY(-100%);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 998;
+            transform: translateX(100%);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
         }
         
         .nav-menu.active {
-            transform: translateY(0);
+            transform: translateX(0);
             opacity: 1;
             visibility: visible;
         }
