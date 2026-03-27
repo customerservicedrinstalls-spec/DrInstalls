@@ -3373,10 +3373,7 @@ section {
         bottom: 0;
         padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
-    /* Minimal margin so sticky bar doesn't overlap footer bottom */
-    .footer .footer-bottom {
-        margin-bottom: 60px;
-    }
+
     /* Mobile nav handled in main.js */
 }
 
