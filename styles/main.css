@@ -3338,3 +3338,61 @@ section {
         padding-bottom: 70px;
     }
 }
+
+/* ===================== */
+/* Trust Strip            */
+/* ===================== */
+.trust-strip {
+    background: var(--dark-navy);
+    padding: 20px 0;
+}
+
+.trust-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.trust-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+}
+
+.trust-strip-item i {
+    font-size: 1.8rem;
+    color: var(--accent-yellow);
+    flex-shrink: 0;
+}
+
+.trust-strip-item strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--white);
+}
+
+.trust-strip-item span {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 992px) {
+    .trust-strip-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .trust-strip-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .trust-strip-item i {
+        font-size: 1.4rem;
+    }
+    .trust-strip-item strong {
+        font-size: 0.85rem;
+    }
+}
