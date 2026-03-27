@@ -3279,3 +3279,62 @@ section {
         padding: 16px 0;
     }
 }
+
+/* ===================== */
+/* Mobile Sticky CTA Bar */
+/* ===================== */
+.mobile-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: var(--dark-navy);
+    padding: 10px 12px;
+    gap: 10px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.sticky-call {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+.sticky-call:hover {
+    background: var(--gray-100);
+}
+
+.sticky-schedule {
+    background: linear-gradient(135deg, var(--accent-yellow), var(--bright-yellow));
+    color: var(--dark-navy);
+}
+
+.sticky-schedule:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .mobile-sticky-cta {
+        display: flex;
+    }
+    /* Add padding to body so footer isn't hidden behind sticky bar */
+    body {
+        padding-bottom: 70px;
+    }
+}
