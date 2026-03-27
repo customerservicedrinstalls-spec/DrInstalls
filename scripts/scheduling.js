@@ -3,7 +3,7 @@
 // =====================
 // Config - Replace with your deployed Google Apps Script URL
 // =====================
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwB4EDw3gncdTy2WyY_IXHA7EAHv3EKO9W_LszbHvSHyBOEC7kgyXndiEG8CyqvccXLAg/exec';
 
 // =====================
 // Pricing Data
@@ -437,16 +437,18 @@ function initSignContract() {
             return;
         }
 
-        // Submit to Google Sheets, then go to confirmation
+        // Generate PDF, submit to Google Sheets with PDF attached, then go to confirmation
         btn.disabled = true;
         btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Submitting...';
-        submitToGoogleSheets().then(() => {
+
+        generateContractPdfBase64().then(pdfBase64 => {
+            return submitToGoogleSheets(pdfBase64);
+        }).then(() => {
             populateConfirmation();
             goToStep(4);
         }).catch(err => {
             console.error('Submission error:', err);
             // Still go to confirmation even if submission fails
-            // (they can still download the PDF, and we'll show a note)
             populateConfirmation();
             goToStep(4);
         }).finally(() => {
@@ -491,7 +493,7 @@ function populateConfirmation() {
 // =====================
 // Submit to Google Sheets
 // =====================
-async function submitToGoogleSheets() {
+async function submitToGoogleSheets(pdfBase64) {
     if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
         console.warn('Google Apps Script URL not configured — skipping submission.');
         return;
@@ -515,15 +517,98 @@ async function submitToGoogleSheets() {
         signatureDate: state.signatureDate,
     };
 
+    // Attach PDF if generated
+    if (pdfBase64) {
+        payload.pdfBase64 = pdfBase64;
+        payload.pdfFilename = `DR-Installs-Contract-${c.name.replace(/\s+/g, '-')}-${state.serviceDate || 'signed'}.pdf`;
+    }
+
     const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',  // Apps Script doesn't support CORS preflight
+        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(payload),
     });
 
-    // no-cors means we can't read the response, but the request goes through
     console.log('Submitted to Google Sheets');
+}
+
+// =====================
+// Generate contract PDF as base64 (for email attachment)
+// =====================
+async function generateContractPdfBase64() {
+    try {
+        const { jsPDF } = window.jspdf;
+        const step3 = document.getElementById('step-3');
+        const contractEl = document.getElementById('contractContent');
+        const wasHidden = !step3.classList.contains('active');
+
+        if (wasHidden) {
+            step3.style.display = 'block';
+            step3.style.position = 'absolute';
+            step3.style.left = '-9999px';
+            step3.style.top = '0';
+        }
+
+        await new Promise(r => setTimeout(r, 100));
+
+        const canvas = await html2canvas(contractEl, {
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            backgroundColor: '#ffffff',
+            windowWidth: 900,
+        });
+
+        if (wasHidden) {
+            step3.style.display = '';
+            step3.style.position = '';
+            step3.style.left = '';
+            step3.style.top = '';
+        }
+
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter' });
+
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const margin = 30;
+        const usableWidth = pageWidth - margin * 2;
+        const usableHeight = pageHeight - margin * 2;
+        const imgAspect = canvas.height / canvas.width;
+        const scaledWidth = usableWidth;
+        const scaledHeight = scaledWidth * imgAspect;
+
+        if (scaledHeight <= usableHeight) {
+            pdf.addImage(imgData, 'JPEG', margin, margin, scaledWidth, scaledHeight);
+        } else {
+            const pxPerPage = (usableHeight / scaledHeight) * canvas.height;
+            let srcY = 0;
+            let page = 0;
+
+            while (srcY < canvas.height) {
+                if (page > 0) pdf.addPage();
+                const sliceH = Math.min(pxPerPage, canvas.height - srcY);
+                const sliceCanvas = document.createElement('canvas');
+                sliceCanvas.width = canvas.width;
+                sliceCanvas.height = sliceH;
+                const ctx = sliceCanvas.getContext('2d');
+                ctx.drawImage(canvas, 0, srcY, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
+                const sliceData = sliceCanvas.toDataURL('image/jpeg', 0.95);
+                const sliceScaledH = (sliceH / canvas.width) * scaledWidth;
+                pdf.addImage(sliceData, 'JPEG', margin, margin, scaledWidth, sliceScaledH);
+                srcY += sliceH;
+                page++;
+            }
+        }
+
+        // Return base64 without the data URI prefix
+        const dataUri = pdf.output('datauristring');
+        return dataUri.split(',')[1];
+    } catch (err) {
+        console.error('PDF generation for email failed:', err);
+        return null; // Non-blocking — submission still goes through without PDF
+    }
 }
 
 // =====================
