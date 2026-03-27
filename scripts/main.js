@@ -390,19 +390,19 @@ const animationStyles = `
             bottom: 60px;
             background: white;
             flex-direction: column;
-            padding: 10px 20px;
+            padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            z-index: 998;
-            clip-path: inset(0 0 100% 0);
-            pointer-events: none;
-            transition: clip-path 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         
         .nav-menu.active {
-            clip-path: inset(0 0 0 0);
-            pointer-events: auto;
+            opacity: 1;
+            visibility: visible;
         }
         
         .mobile-menu-toggle.active span:nth-child(1) {
