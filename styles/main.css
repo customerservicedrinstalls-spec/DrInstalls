@@ -464,14 +464,22 @@ section {
     
     .hero,
     .page-header {
-        padding-top: 180px;
+        padding-top: 160px;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 480px) {
     .hero,
     .page-header {
-        padding-top: 200px;
+        padding-top: 160px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
     }
 }
 
@@ -1478,21 +1486,56 @@ section {
         max-width: 1200px;
     }
     
+    .header-top {
+        padding: 5px 0;
+    }
+    
     .header-top-content {
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
         text-align: center;
     }
     
     .trust-indicators {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 6px;
+    }
+    
+    .badge {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+    }
+    
+    .header .contact-info {
+        gap: 10px;
+    }
+    
+    .phone {
+        font-size: 0.85rem;
+    }
+    
+    .cta-button {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .navbar {
+        padding: 8px 0;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+    
+    .logo-motto {
+        font-size: 0.75rem;
     }
     
     .nav-menu {
         display: none;
         position: fixed;
-        top: 140px;
+        top: 120px;
         left: 0;
         right: 0;
         background: var(--white);
@@ -1500,7 +1543,7 @@ section {
         padding: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        max-height: calc(100vh - 140px);
+        max-height: calc(100vh - 120px);
         overflow-y: auto;
     }
     
@@ -3339,10 +3382,12 @@ section {
 @media (max-width: 768px) {
     .mobile-sticky-cta {
         display: flex;
+        bottom: 0;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
     /* Add padding to body so footer isn't hidden behind sticky bar */
     body {
-        padding-bottom: 70px;
+        padding-bottom: 80px;
     }
 }
 
