@@ -3386,8 +3386,12 @@ section {
         bottom: 0;
         padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
-    /* Add padding to body so footer isn't hidden behind sticky bar */
-    body {
+    /* Add padding to footer so content isn't hidden behind sticky bar */
+    .footer {
+        padding-bottom: 80px;
+    }
+    /* Extra padding at bottom of mobile nav so sticky bar doesn't cover last item */
+    .nav-menu {
         padding-bottom: 80px;
     }
 }
