@@ -464,7 +464,14 @@ section {
     
     .hero,
     .page-header {
-        padding-top: 140px;
+        padding-top: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero,
+    .page-header {
+        padding-top: 200px;
     }
 }
 
