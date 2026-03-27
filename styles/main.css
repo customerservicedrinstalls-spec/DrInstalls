@@ -464,7 +464,7 @@ section {
     
     .hero,
     .page-header {
-        padding-top: 160px;
+        padding-top: 80px;
     }
 
     .page-header h1 {
@@ -475,7 +475,7 @@ section {
 @media (max-width: 480px) {
     .hero,
     .page-header {
-        padding-top: 160px;
+        padding-top: 75px;
     }
     
     .page-header h1 {
@@ -1488,6 +1488,7 @@ section {
     
     .header-top {
         padding: 5px 0;
+        display: none;
     }
     
     .header-top-content {
@@ -1536,7 +1537,7 @@ section {
     .nav-menu {
         display: none;
         position: fixed;
-        top: 120px;
+        top: 65px;
         left: 0;
         right: 0;
         background: var(--white);
@@ -1544,7 +1545,7 @@ section {
         padding: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 65px);
         overflow-y: auto;
     }
     
