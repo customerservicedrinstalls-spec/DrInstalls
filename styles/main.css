@@ -3120,3 +3120,81 @@ section {
         max-width: 280px;
     }
 }
+
+/* ===================== */
+/* Review CTA Section    */
+/* ===================== */
+.review-cta-section {
+    padding: 60px 0;
+    background: var(--gray-100);
+}
+
+.review-cta-box {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 16px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(30, 58, 138, 0.2);
+}
+
+.review-cta-content h2 {
+    color: var(--white);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.review-cta-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.review-cta-icon {
+    font-size: 2.5rem;
+    color: var(--accent-yellow);
+    margin-bottom: 1rem;
+}
+
+.review-cta-btn {
+    background: var(--accent-yellow) !important;
+    color: var(--dark-navy) !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 14px 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.review-cta-btn:hover {
+    background: var(--bright-yellow) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.review-cta-rating {
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.review-cta-rating .stars {
+    color: var(--accent-yellow);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .review-cta-box {
+        padding: 35px 20px;
+    }
+    .review-cta-content h2 {
+        font-size: 1.5rem;
+    }
+}
