@@ -3387,9 +3387,9 @@ section {
         bottom: 0;
         padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
-    /* Add padding to footer so content isn't hidden behind sticky bar */
-    .footer {
-        padding-bottom: 80px;
+    /* Minimal margin so sticky bar doesn't overlap footer bottom */
+    .footer .footer-bottom {
+        margin-bottom: 60px;
     }
     /* Extra padding at bottom of mobile nav so sticky bar doesn't cover last item */
     .nav-menu {
