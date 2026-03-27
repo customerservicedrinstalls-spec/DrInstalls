@@ -489,6 +489,130 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our pool opening and closing services</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>When should I open my pool for summer?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>In Illinois, Indiana, and Michigan, we recommend opening your pool in late April to mid-May, once nighttime temperatures consistently stay above 50°F. Opening too early can lead to algae growth, while waiting too long means less swim time. We typically start scheduling openings in March.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>When should I close my pool for winter?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pool closing typically happens between mid-September and late October in the Midwest. The ideal time is when water temperatures drop below 65°F consistently. Closing too late risks freeze damage to your plumbing and equipment. We recommend booking your closing by early September.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long does a pool opening or closing take?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A standard pool opening takes about 1–2 hours. This includes removing the cover, reconnecting equipment, filling the pool, balancing chemicals, and running the system. Pool closings typically take 1.5–2 hours, including draining lines, adding winterizing chemicals, and installing the cover.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How much does pool opening and closing cost?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our pool opening prices start at $295 and pool closing starts at $285, depending on pool size. Use our scheduling tool above for instant pricing based on your specific pool. We offer competitive rates with no hidden fees — the price you see is the price you pay.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What areas do you serve?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We serve homeowners across Illinois, Indiana, and Michigan. Our main service areas include the Chicagoland suburbs, Northwest Indiana, and Southwest Michigan. If you're unsure whether we cover your area, give us a call at (815) 483-9713 and we'll let you know.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What's included in a pool opening service?</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our pool opening includes: removing and folding the winter cover, reinstalling ladders and accessories, reconnecting the pump, filter, and heater, filling the pool to proper level, adding startup chemicals, and testing the water. We leave your pool ready to swim within 24–48 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "When should I open my pool for summer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In Illinois, Indiana, and Michigan, we recommend opening your pool in late April to mid-May, once nighttime temperatures consistently stay above 50°F. Opening too early can lead to algae growth, while waiting too long means less swim time."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "When should I close my pool for winter?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pool closing typically happens between mid-September and late October in the Midwest. The ideal time is when water temperatures drop below 65°F consistently. Closing too late risks freeze damage to your plumbing and equipment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does a pool opening or closing take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A standard pool opening takes about 1–2 hours including removing the cover, reconnecting equipment, filling the pool, balancing chemicals, and running the system. Pool closings typically take 1.5–2 hours."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does pool opening and closing cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pool opening prices start at $295 and pool closing starts at $285, depending on pool size. Use our online scheduling tool for instant pricing based on your specific pool."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What areas do you serve for pool services?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We serve homeowners across Illinois, Indiana, and Michigan. Our main service areas include the Chicagoland suburbs, Northwest Indiana, and Southwest Michigan."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's included in a pool opening service?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our pool opening includes removing the winter cover, reinstalling ladders and accessories, reconnecting the pump, filter, and heater, filling the pool, adding startup chemicals, and testing the water. Your pool will be ready to swim within 24–48 hours."
+                }
+            }
+        ]
+    }
+    </script>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -544,5 +668,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="scripts/main.js?v=7"></script>
     <script src="scripts/scheduling.js?v=1"></script>
+    <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            // Toggle clicked
+            if (!isActive) item.classList.add('active');
+        });
+    });
+    </script>
 </body>
 </html>
