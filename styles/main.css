@@ -3434,3 +3434,12 @@ section {
         font-size: 0.85rem;
     }
 }
+
+/* Nav items must always be visible — never affected by scroll animations */
+.nav-menu li,
+.nav-menu .nav-item,
+.nav-menu .nav-link {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}

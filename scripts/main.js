@@ -249,10 +249,16 @@ function initScrollEffects() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
+    // Observe elements for animation (exclude nav items)
     const animateElements = document.querySelectorAll('.service-card, .feature, .step, .review-card');
     animateElements.forEach(el => {
         observer.observe(el);
+    });
+    
+    // Make sure nav items are always visible
+    document.querySelectorAll('.nav-menu li, .nav-menu .nav-item').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
     });
 }
 
