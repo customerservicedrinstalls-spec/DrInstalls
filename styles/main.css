@@ -1540,13 +1540,14 @@ section {
         top: 65px;
         left: 0;
         right: 0;
+        bottom: 60px;
         background: var(--white);
         flex-direction: column;
         padding: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        max-height: calc(100vh - 65px);
-        overflow-y: auto;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
     
     .nav-menu.active {
