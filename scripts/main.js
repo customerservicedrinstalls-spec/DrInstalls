@@ -395,11 +395,14 @@ const animationStyles = `
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             z-index: 998;
-            display: none;
+            clip-path: inset(0 0 100% 0);
+            pointer-events: none;
+            transition: clip-path 0.3s ease;
         }
         
         .nav-menu.active {
-            display: flex;
+            clip-path: inset(0 0 0 0);
+            pointer-events: auto;
         }
         
         .mobile-menu-toggle.active span:nth-child(1) {

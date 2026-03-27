@@ -3374,10 +3374,7 @@ section {
     .footer .footer-bottom {
         margin-bottom: 60px;
     }
-    /* Extra padding at bottom of mobile nav so sticky bar doesn't cover last item */
-    .nav-menu {
-        padding-bottom: 80px;
-    }
+    /* Mobile nav handled in main.js */
 }
 
 /* ===================== */
