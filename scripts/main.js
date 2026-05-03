@@ -17,20 +17,51 @@ document.addEventListener('DOMContentLoaded', function() {
 function initHeroSlider() {
     const slides = document.querySelectorAll('.hero-slider .slide');
     const heroTitle = document.querySelector('.hero-title');
-    const services = ['Pool Installation', 'Deck Construction', 'Professional Landscaping'];
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroSlides = [
+        {
+            highlight: 'Luxury Fiberglass Pools',
+            line: 'Installed Faster. Built to Last.',
+            subtitle: 'Low-maintenance fiberglass inground pools with smooth gelcoat finishes, durable composite shells, and premium backyard designs.'
+        },
+        {
+            highlight: 'Custom Deck Construction',
+            line: 'Designed for Outdoor Living.',
+            subtitle: 'Beautiful, durable decks built around how your family relaxes, entertains, and enjoys the backyard.'
+        },
+        {
+            highlight: 'Professional Landscaping',
+            line: 'The Final Touch That Completes the Oasis.',
+            subtitle: 'Hardscaping, grading, decorative rock, and finishing details that tie your pool and yard together.'
+        }
+    ];
     let currentSlide = 0;
+
+    function updateHeroText() {
+        const slide = heroSlides[currentSlide];
+        const highlight = heroTitle.querySelector('.highlight');
+        if (highlight) {
+            highlight.textContent = slide.highlight;
+        }
+        if (heroTitle) {
+            const lineNode = Array.from(heroTitle.childNodes).find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+            if (lineNode) {
+                lineNode.textContent = ` ${slide.line}`;
+            }
+        }
+        if (heroSubtitle) {
+            heroSubtitle.textContent = slide.subtitle;
+        }
+    }
 
     function nextSlide() {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
-        
-        // Update hero text
-        const highlight = heroTitle.querySelector('.highlight');
-        if (highlight) {
-            highlight.textContent = services[currentSlide];
-        }
+        updateHeroText();
     }
+
+    updateHeroText();
 
     // Auto-advance slides every 5 seconds
     setInterval(nextSlide, 5000);
@@ -451,24 +482,24 @@ function initServiceModals() {
     // Service data
     const serviceData = {
         'inground-pool': {
-            title: 'Inground Pool Installation',
-            image: 'assets/images/original-projects/inground-pool-1.jpg',
+            title: 'Fiberglass Inground Pool Installation',
+            image: 'assets/images/fiberglass/fiberglass-hero-pool.webp',
             description: `
-                <p>Transform your backyard into a private paradise! DR Installs is thrilled to bring you unbeatable offers on custom inground pools. Act fast and make a splash with these incredible perks.</p>
+                <p>Fiberglass inground pools are DR Installs' preferred path for homeowners who want a premium backyard pool with faster installation, a smoother finish, and less long-term maintenance.</p>
                 
-                <p>Enjoy exclusive discounts on our top-of-the-line inground pool packages. Your dream backyard is now more affordable than ever with FREE Upgrades, Fast Installation, Financing Options, and Limited Availability.</p>
+                <p>These composite shells arrive factory-built and ready to place, helping reduce construction time while delivering a durable, comfortable pool surface with a luxury look.</p>
                 
-                <h3>What We Offer:</h3>
+                <h3>Why Homeowners Choose Fiberglass:</h3>
                 <ul>
-                    <li>Custom pool design tailored to your space</li>
-                    <li>Professional excavation and site preparation</li>
-                    <li>Quality materials and expert installation</li>
-                    <li>Complete plumbing and electrical work</li>
+                    <li>Smooth gelcoat surface that is comfortable and easier to clean</li>
+                    <li>Non-porous finish that gives algae fewer places to grow</li>
+                    <li>Composite construction designed for durability and corrosion resistance</li>
+                    <li>Options for tanning ledges, benches, splash areas, spas, and deep ends</li>
+                    <li>Premium water-color finishes for modern, classic, or resort-style backyards</li>
                     <li>Financing options available</li>
-                    <li>Fast installation timeline</li>
                 </ul>
                 
-                <p>Book your free consultation today to secure your spot for this coming summer! Don't miss the chance to elevate your lifestyle with a custom inground pool.</p>
+                <p>Book your free consultation and we will help you choose the right fiberglass pool layout, color, and backyard package for your space.</p>
             `
         },
         'above-ground-pool': {
