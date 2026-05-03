@@ -4,4 +4,4 @@ Disallow: /index-old-backup.html
 Disallow: /thank-you.html
 Disallow: /assets/output/
 
-Sitemap: https://drinstalls.com/sitemap.xml
+Sitemap: https://drinstalls.co/sitemap.xml
