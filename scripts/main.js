@@ -418,7 +418,7 @@ const animationStyles = `
         justify-content: center;
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
         .nav-menu {
             position: fixed;
             top: 100%;
@@ -427,6 +427,8 @@ const animationStyles = `
             max-height: calc(100vh - 130px);
             background: white;
             flex-direction: column;
+            align-items: stretch;
+            gap: 0;
             padding: 20px 20px 80px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
@@ -439,6 +441,7 @@ const animationStyles = `
         }
         
         .nav-menu.active {
+            display: flex;
             transform: translateY(0);
             opacity: 1;
             visibility: visible;

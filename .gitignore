@@ -1,2 +1,39 @@
-/.DS_Store
-/.vscode
+# macOS / editor junk
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs / temp files
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies / build output
+node_modules/
+dist/
+build/
+coverage/
+
+# Local test/debug scratch files
+test-*.js
+test-*.sh
+*-backup.html
+*.bak
+
+# Generated media/tool exports - keep curated site assets under assets/images and assets/videos tracked
+assets/output/
+exports/
+downloads/
