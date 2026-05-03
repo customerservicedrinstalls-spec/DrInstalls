@@ -315,7 +315,7 @@ p {
 }
 
 .hero-slider .slide:nth-child(1) {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7), rgba(59, 130, 246, 0.6)), url('../assets/images/instagram/customer-434rwevcsd.jpg');
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.66), rgba(15, 23, 42, 0.48)), url('../assets/images/fiberglass/fiberglass-family-splash-pad.webp');
     background-size: cover;
     background-position: center;
 }
@@ -327,7 +327,7 @@ p {
 }
 
 .hero-slider .slide:nth-child(3) {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7), rgba(59, 130, 246, 0.6)), url('../assets/images/new-images/FullSizeRender.jpg');
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7), rgba(59, 130, 246, 0.6)), url('../assets/images/new-images/hardscaping/IMG_1748.jpeg');
     background-size: cover;
     background-position: center;
 }
@@ -677,6 +677,338 @@ section {
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+/* Fiberglass Pool Feature */
+.fiberglass-feature {
+    background: var(--white);
+    padding: 90px 0;
+}
+
+.fiberglass-feature-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.fiberglass-feature-media {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+    position: relative;
+}
+
+.fiberglass-feature-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(255, 215, 0, 0.08));
+}
+
+.fiberglass-feature-media img {
+    width: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+.section-eyebrow {
+    display: inline-block;
+    color: var(--primary-blue);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+.fiberglass-feature-content h2 {
+    color: var(--gray-900);
+    font-size: 2.8rem;
+    margin-bottom: 18px;
+}
+
+.fiberglass-feature-content > p {
+    font-size: 1.12rem;
+    line-height: 1.75;
+    margin-bottom: 30px;
+}
+
+.fiberglass-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.fiberglass-benefit {
+    background: var(--gray-100);
+    border-radius: 16px;
+    padding: 24px;
+    border-left: 4px solid var(--secondary-blue);
+}
+
+.fiberglass-benefit i {
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.fiberglass-benefit h3 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+}
+
+.fiberglass-benefit p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.fiberglass-feature-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.service-card.featured-service {
+    border: 3px solid var(--accent-yellow);
+    box-shadow: 0 12px 40px rgba(30, 58, 138, 0.16);
+    position: relative;
+}
+
+.service-card.featured-service::before {
+    content: 'Recommended';
+    display: inline-block;
+    align-self: center;
+    order: -1;
+    background: var(--accent-yellow);
+    color: var(--dark-navy);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 6px 10px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+}
+
+.fiberglass-service-info {
+    margin-top: 50px;
+}
+
+.fiberglass-info-card {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 34px;
+    align-items: center;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 34px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.14);
+}
+
+.fiberglass-info-card img {
+    width: 100%;
+    border-radius: 14px;
+    display: block;
+}
+
+.fiberglass-info-card h3 {
+    color: var(--gray-900);
+    margin-bottom: 12px;
+}
+
+.color-swatch-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.color-swatch-row img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.10);
+}
+
+
+.fiberglass-shapes-section {
+    background: var(--white);
+    padding: 80px 0;
+}
+
+.shape-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.shape-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(59, 130, 246, 0.14);
+}
+
+.shape-card > img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: contain;
+    background: var(--white);
+    display: block;
+}
+
+.shape-card-content {
+    padding: 28px;
+    background: var(--white);
+}
+
+.shape-card-content span {
+    display: inline-block;
+    color: var(--primary-blue);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    margin-bottom: 10px;
+}
+
+.shape-card-content h3 {
+    color: var(--gray-900);
+    margin-bottom: 10px;
+}
+
+.shape-card-content p {
+    margin-bottom: 18px;
+}
+
+.shape-diagram {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    background: var(--white);
+    border: 1px solid rgba(59, 130, 246, 0.10);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.page-header.fiberglass-page-header {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.82), rgba(15, 23, 42, 0.68)), url('../assets/images/fiberglass/fiberglass-family-splash-pad.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.fiberglass-landing-intro,
+.fiberglass-details-section,
+.fiberglass-process,
+.fiberglass-benefits-section {
+    padding: 80px 0;
+}
+
+.fiberglass-landing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.fiberglass-landing-copy h2 {
+    font-size: 2.7rem;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+}
+
+.fiberglass-landing-copy > p {
+    font-size: 1.12rem;
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+
+.fiberglass-landing-image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 55px rgba(15, 23, 42, 0.18);
+}
+
+.fiberglass-landing-image img {
+    width: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+.fiberglass-check-list {
+    margin: 24px 0 30px;
+}
+
+.fiberglass-benefits-grid.wide {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.fiberglass-detail-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.fiberglass-detail-pair .fiberglass-info-card {
+    grid-template-columns: 1fr;
+    align-content: start;
+}
+
+.fiberglass-detail-pair .fiberglass-info-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.fiberglass-steps .step {
+    display: block;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.fiberglass-steps .step-number {
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 900px) {
+    .fiberglass-feature-grid,
+    .fiberglass-info-card,
+    .fiberglass-landing-grid,
+    .fiberglass-detail-pair {
+        grid-template-columns: 1fr;
+    }
+
+    .fiberglass-feature-media img,
+    .fiberglass-landing-image img {
+        min-height: 320px;
+    }
+
+    .fiberglass-benefits-grid,
+    .fiberglass-benefits-grid.wide,
+    .shape-cards-grid,
+    .color-swatch-row {
+        grid-template-columns: 1fr;
+    }
+
+    .color-swatch-row img {
+        height: 240px;
+    }
+
+    .fiberglass-feature-content h2,
+    .fiberglass-landing-copy h2 {
+        font-size: 2rem;
+    }
 }
 
 /* Process Section */
@@ -3053,5 +3385,148 @@ section {
     .contact-buttons .btn {
         width: 100%;
         max-width: 250px;
+    }
+}
+
+/* Fiberglass Process Timeline */
+.fiberglass-process .section-header {
+    margin-bottom: 45px;
+}
+
+.fiberglass-process .section-header p {
+    max-width: 860px;
+}
+
+.fiberglass-process-timeline {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.fiberglass-process-step {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 22px;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(59, 130, 246, 0.16);
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.fiberglass-process-step::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue), var(--accent-yellow));
+}
+
+.process-step-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.22);
+}
+
+.process-step-icon span {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--accent-yellow);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.process-step-icon i {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.process-step-content h3 {
+    color: var(--gray-900);
+    font-size: 1.28rem;
+    margin-bottom: 10px;
+}
+
+.process-step-content p {
+    margin-bottom: 14px;
+    line-height: 1.65;
+}
+
+.process-step-content ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.process-step-content li {
+    color: var(--gray-700);
+    position: relative;
+    padding-left: 22px;
+    line-height: 1.45;
+}
+
+.process-step-content li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--success-green);
+    font-weight: 800;
+}
+
+.fiberglass-process-note {
+    max-width: 980px;
+    margin: 34px auto 0;
+    padding: 24px 28px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(255, 215, 0, 0.16));
+    border: 1px solid rgba(30, 58, 138, 0.16);
+    color: var(--gray-700);
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+.fiberglass-process-note strong {
+    color: var(--gray-900);
+}
+
+.fiberglass-process-note a {
+    color: var(--primary-blue);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+.fiberglass-process-note a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .fiberglass-process-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .fiberglass-process-step {
+        grid-template-columns: 1fr;
+    }
+
+    .process-step-icon {
+        width: 70px;
+        height: 70px;
     }
 }
