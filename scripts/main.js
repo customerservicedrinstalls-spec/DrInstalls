@@ -280,10 +280,16 @@ function initScrollEffects() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
+    // Observe elements for animation (exclude nav items)
     const animateElements = document.querySelectorAll('.service-card, .feature, .step, .review-card');
     animateElements.forEach(el => {
         observer.observe(el);
+    });
+    
+    // Make sure nav items are always visible
+    document.querySelectorAll('.nav-menu li, .nav-menu .nav-item').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
     });
 }
 
@@ -418,10 +424,14 @@ const animationStyles = `
             top: 100%;
             left: 0;
             right: 0;
+            max-height: calc(100vh - 130px);
             background: white;
             flex-direction: column;
-            padding: 20px;
+            padding: 20px 20px 80px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 999;
             transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;

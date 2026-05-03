@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /index-old-backup.html
+
+Sitemap: https://drinstalls.com/sitemap.xml
